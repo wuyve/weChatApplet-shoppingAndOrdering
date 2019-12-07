@@ -1,0 +1,41 @@
+<!--pages/my/my.wxml-->
+<view class='my-center'>
+  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+</view>
+<view>
+  <view class='my-order'>我的订单
+    <navigator url="../logs" class='look-all' hover-class="navigator-hover">查看全部</navigator>
+    <view class='my-order-block'>
+      <image class='my-order-image01' src="../../imgs/my01.png"></image>
+      <view class='my-order-text'>待付款</view>
+    </view>
+    <view class='my-order-block img02'>
+      <image class='my-order-image01' src='../../imgs/my02.png'></image>
+      <view class='my-order-text'>待发货</view>
+    </view>
+    <view class='my-order-block img03'>
+      <image class='my-order-image01' src='../../imgs/my03.png'></image>
+      <view class='my-order-text'>待收货</view>
+    </view>
+    <view class='my-order-block img04'>
+      <image class='my-order-image01' src='../../imgs/my04.png'></image>
+      <view class='my-order-text'>已完成</view>
+    </view>
+  </view>
+  <view class='my-block'>
+    <image class='my-block-img' src='../../imgs/myOrder.png'></image>
+    <text class='my-block-text'>我的预约</text>
+  </view>
+  <view class='my-block'>
+    <image class='my-block-img' src='../../imgs/myFee.png'></image>
+    <text class='my-block-text'>我的优惠券</text>
+  </view>
+  <view class='my-block'>
+    <image class='my-block-img' src='../../imgs/myAddr.png'></image>
+    <text class='my-block-text'>收货地址</text>
+  </view>
+  <view class='my-block'>
+    <image class='my-block-img' src='../../imgs/tele.png'></image>
+    <text class='my-block-text'>联系商家</text>
+  </view>
+</view>

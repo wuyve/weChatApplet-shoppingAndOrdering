@@ -1,0 +1,22 @@
+/* pages/test/test.wxss */
+page {
+  background-color: #fff;
+  font-size: 17px;
+}
+.selector {
+  margin: 3%;
+}
+.picker {
+  margin-top: 2%;
+  padding: 1%;
+  background-color: #f5f5f5;
+}
+.to-picker {
+  color: #0083D0;
+}
+.button {
+  position: absolute;
+  bottom: 2%;
+  left: 3%;
+  width: 94%;
+}

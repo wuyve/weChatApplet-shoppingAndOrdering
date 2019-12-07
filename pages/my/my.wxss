@@ -1,0 +1,72 @@
+/* pages/my/my.wxss */
+.my-center {
+  margin: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%; 
+  overflow: hidden;
+}
+.userinfo-avatar {
+  height: 100%;
+  width: 100%;
+}
+.my-order {
+  width:94%;
+  height:18vh;
+  margin:2%;
+  border:0.5px solid #ccc;
+  padding:1%;
+}
+.look-all {
+  color: #ccc;
+  font-size:10px;
+  position:absolute;
+  top:94px;
+  right:5%;
+}
+.my-order-block {
+  margin-top: 2%;
+  width:22%;
+  height:20vh;
+}
+.img02 {
+  position: absolute;
+  top: 116px;
+  left: 26%;
+}
+.img03 {
+  position: absolute;
+  top: 116px;
+  left: 50%;
+}
+.img04 {
+  position: absolute;
+  top: 116px;
+  left: 75%;
+}
+.my-order-image01 {
+  width:35%;
+  height:35%;
+  margin:0 auto;
+  display:block;
+}
+.my-order-text {
+  text-align:center;
+  font-size:13px;
+}
+.my-block {
+  margin: 3%;
+  width: 96%;
+  height: 6vh;
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
+  border-bottom-color: #ccc; 
+}
+.my-block-img {
+  width: 20px;
+  height: 20px;
+}
+.my-block-text {
+  margin-left: 2%;
+  font-size: 15px;
+}

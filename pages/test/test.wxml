@@ -1,0 +1,16 @@
+<!--pages/test/test.wxml-->
+<view>
+  <view class='selector'>
+    <view class='select-date'>请选择日期</view>
+    <picker mode="date" value='{{date}}' start="{{beginDate}}" end="{{endDate}}" bindchange='bindDateChange'>
+      <view class='picker'>当前选择：<text class='to-picker'>{{date}}</text></view>
+    </picker>
+  </view>
+  <view class='selector'>
+    <view class='select-time'>请选择时间</view>
+    <picker mode="time" value='{{time}}' start="{{beginTime}}" end="{{endTime}}" bindchange='bindTimeChange'>
+      <view class='picker'>当前选择：<text class='to-picker'>{{time}}</text></view>
+    </picker>
+  </view>
+  <button class='button' type='primary' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>预约</button>
+</view>

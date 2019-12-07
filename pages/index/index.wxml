@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+ <block wx:for="{{imgURLs}}" wx:key="unique">
+  <swiper-item>
+   <image src="{{item}}" class="slide-image"/>
+  </swiper-item>
+ </block>
+</swiper>
+<view>
+  <view wx:for="{{pictureURLs}}" wx:key="unique" class='pictures'>
+    <image class='pictures-item' src="{{item}}"></image>
+  </view>
+</view>
+<view class='TOP'>TOP 10</view>
