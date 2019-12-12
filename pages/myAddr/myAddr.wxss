@@ -1,0 +1,19 @@
+/* pages/myAddr/myAddr.wxss */
+.myAddr-btn {
+  margin: 2% auto;
+  width: 55%;
+  height: 6vh;
+  background-color: #F8F8F8;
+}
+.myAddr-addIcon {
+  width: 10%;
+  height: 61%;
+  position: relative;
+  top: 24%;
+  left: 20%;
+}
+.myAddr-btn-add {
+  position: relative;
+  top: 13%;
+  left: 25%;
+}

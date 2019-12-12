@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/test/test",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/shopper/shopper",
+    "pages/myAddr/myAddr",
+    "pages/myAddr/addAddr/addAddr"
   ],
   "window": {
     "backgroundTextStyle": "light",

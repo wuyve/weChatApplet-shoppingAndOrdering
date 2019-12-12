@@ -133,7 +133,7 @@ Page({
   // 检测用户是否登陆
   getUserInfo: function () {
     console.log(app.globalData.userInfo);
-    if (JSON.stringify(app.globalData.userInfo) != "{}") {
+    if (JSON.stringify(app.globalData.userInfo) != "{}" || app.globalData.userInfo != null) {
       let currentTime = new Date()
       let thisTime = `${this.data.date} ${this.data.time}`
       thisTime = thisTime.replace("-", "/")
@@ -144,6 +144,8 @@ Page({
       } else {
         this.popConfirm()
       }
+    } else {
+
     }
   },
   // 确定选择日期的弹窗

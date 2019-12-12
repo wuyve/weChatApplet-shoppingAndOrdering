@@ -1,0 +1,23 @@
+<!--pages/myAddr/addAddr/addAddr.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view>
+    <view>收货人</view>
+    <input name="user" placeholder="请输入姓名"></input>
+  </view>
+  <view>
+    <view>联系方式</view>
+    <input name="phone" placeholder="请输入手机号码"></input>
+  </view>
+  <view>
+    <view>选择地址</view>
+    <picker name="addr" mode="region" bindchange="bindRegionChange"></picker>
+  </view>
+  <view>
+    <view>详细地址</view>
+    <input name="addrDetail" placeholder="请输入详细住址/门牌号"></input>
+  </view>
+  <view class="btn-area">
+    <button formType="submit">Submit</button>
+    <button formType="reset">Reset</button>
+  </view>
+</form>

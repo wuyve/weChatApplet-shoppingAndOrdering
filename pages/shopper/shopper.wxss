@@ -1,0 +1,20 @@
+.shopper {
+  margin: 2%;
+  font-size: 20px;
+}
+.shopper-block {
+  margin-bottom: 3%;
+}
+.shopper-wechat {
+
+}
+.pasteWechat, .getCall {
+  font-size: 16px;
+  color: blue;
+  position: relative;
+  top: -3.5vh;
+  left: 79vw;
+}
+.shopper-btn {
+  width: 97%;
+}

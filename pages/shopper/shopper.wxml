@@ -1,0 +1,11 @@
+<view class="shopper">
+  <view class="shopper-block">
+    <view class="shopper-wechat">商家微信：{{wechat}}</view>
+    <view bindtap="pasteWechat" class="pasteWechat">复制</view>
+  </view>
+  <view class="shopper-block">
+    <view class="shopper-phone">联系电话：{{phone}}</view>
+    <view bindtap="getCall" class="getCall">拨打电话</view>
+  </view>
+</view>
+<button class="shopper-btn" type="primary" bindtap="goBack">返回</button>

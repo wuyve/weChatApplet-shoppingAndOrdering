@@ -1,0 +1,6 @@
+<!--pages/myAddr/myAddr.wxml-->
+<view>收货地址</view>
+<view class="myAddr-btn" bindtap="addAddr">
+  <image class="myAddr-addIcon" src="../../imgs/add.png"></image>
+  <text class="myAddr-btn-add">添加地址</text>
+</view>

@@ -1,6 +1,7 @@
 <!--pages/my/my.wxml-->
 <view class='my-center'>
-  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <image wx:if="{{showMyHeader}}" bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <button wx:if="{{showLoginBtn}}" class="showLoginBtn" open-type='getUserInfo' bindgetuserinfo="login">登陆</button>
 </view>
 <view>
   <view class='my-order'>我的订单
@@ -30,11 +31,11 @@
     <image class='my-block-img' src='../../imgs/myFee.png'></image>
     <text class='my-block-text'>我的优惠券</text>
   </view>
-  <view class='my-block'>
+  <view class='my-block' bindtap="myAddr">
     <image class='my-block-img' src='../../imgs/myAddr.png'></image>
     <text class='my-block-text'>收货地址</text>
   </view>
-  <view class='my-block'>
+  <view class='my-block' bindtap="toShopper">
     <image class='my-block-img' src='../../imgs/tele.png'></image>
     <text class='my-block-text'>联系商家</text>
   </view>
