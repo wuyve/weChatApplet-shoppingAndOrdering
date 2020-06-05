@@ -1,14 +1,16 @@
 /* pages/my/my.wxss */
 .my-center {
-  margin: 20px;
-  width: 50px;
+  margin: 5px;
+  width: 100%;
   height: 50px;
-  border-radius: 100%; 
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: #8a8a8a;
 }
 .userinfo-avatar {
-  height: 100%;
-  width: 100%;
+  height: 45px;
+  width: 45px;
 }
 .my-order {
   width:94%;
@@ -17,19 +19,27 @@
   border:0.5px solid rgb(182, 181, 181);
   padding:1%;
 }
+.my-order-header {
+  display: flex;
+  justify-content: space-between;
+}
 .look-all {
-  color: #ccc;
-  font-size:10px;
-  position:absolute;
-  top:94px;
-  right:5%;
+  color: #1296db;
+  font-size: 11px;
+  margin-top: 4px;
+  margin-right: 10px;
+}
+.my-order-content {
+  display: flex;
+  justify-content: space-around;
 }
 .my-order-block {
   margin-top: 2%;
-  width:22%;
+  width:25%;
   height:20vh;
+  font-size: 7px;
 }
-.img02 {
+/* .img02 {
   position: absolute;
   top: 116px;
   left: 26%;
@@ -43,7 +53,7 @@
   position: absolute;
   top: 116px;
   left: 75%;
-}
+} */
 .my-order-image01 {
   width:35%;
   height:35%;
@@ -72,9 +82,10 @@
 }
 .showLoginBtn {
   width: 16vw;
-  height: 7vh;
+  height: 5vh;
   position: absolute;
   left: 3vw;
   font-size: 16px;
   top: 30px;
+  font-size: 20rpx;
 }

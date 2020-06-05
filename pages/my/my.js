@@ -10,7 +10,46 @@ Page({
     hasUserInfo: false,
     showMyHeader: false,
     showLoginBtn: true,
-    canIUse: wx.canIUse('image.open-type.getUserInfo')
+    canIUse: wx.canIUse('image.open-type.getUserInfo'),
+    username: '',
+    myOrderLists: [
+      {
+        src: '../../imgs/my01.png',
+        text: '待付款',
+        url: ''
+      }, {
+        src: '../../imgs/my02.png',
+        text: '待发货',
+        url: ''
+      }, {
+        src: '../../imgs/my03.png',
+        text: '待收货',
+        url: ''
+      }, {
+        src: '../../imgs/my04.png',
+        text: '已完成',
+        url: ''
+      }
+    ],
+    myBlockLists: [
+      {
+        src: '../../imgs/myOrder.png',
+        text: '我的预约',
+        url: ''
+      }, {
+        src: '../../imgs/myFee.png',
+        text: '我的优惠券',
+        url: ''
+      }, {
+        src: '../../imgs/myAddr.png',
+        text: '收货地址',
+        url: '../myAddr/myAddr'
+      }, {
+        src: '../../imgs/tele.png',
+        text: '联系商家',
+        url: '../shopper/shopper'
+      }
+    ]
   },
 
   /**
@@ -138,9 +177,16 @@ Page({
     })
   },
   // 收货地址
-  myAddr: function(e) {
+  toOtherPage: function(e) {
     wx.navigateTo({
-      url: '../myAddr/myAddr',
+      url: e.currentTarget.dataset.url
+    })
+  },
+  // 点击我的订单相关项目，跳转到相关页面
+  toPage: function(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url
     })
   }
 })

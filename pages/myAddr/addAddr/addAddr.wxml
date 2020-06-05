@@ -1,23 +1,28 @@
-<!--pages/myAddr/addAddr/addAddr.wxml-->
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <view>
-    <view>收货人</view>
-    <input name="user" placeholder="请输入姓名"></input>
-  </view>
-  <view>
-    <view>联系方式</view>
-    <input name="phone" placeholder="请输入手机号码"></input>
-  </view>
-  <view>
-    <view>选择地址</view>
-    <picker name="addr" mode="region" bindchange="bindRegionChange"></picker>
-  </view>
-  <view>
-    <view>详细地址</view>
-    <input name="addrDetail" placeholder="请输入详细住址/门牌号"></input>
-  </view>
-  <view class="btn-area">
-    <button formType="submit">Submit</button>
-    <button formType="reset">Reset</button>
-  </view>
-</form>
+pages/myAddr/addAddr/addAddr.wxml
+<view class="page">
+  <mp-form>
+     <mp-cells title="表单" footer="底部说明文字底部说明文字">
+                <mp-cell prop="qq" title="qq" ext-class="">
+                    <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="请输入qq"/>
+                </mp-cell>
+                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
+                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+                    <view slot="footer" class="weui-vcode-btn">获取验证码</view>
+                </mp-cell>
+                <mp-cell prop="date" title="日期" ext-class="">
+                    <picker data-field="date" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </mp-cell>
+                <mp-cell prop="vcode" title="验证码" ext-class=" weui-cell_vcode">
+                    <input bindinput="formInputChange" data-field="vcode" class="weui-input" placeholder="请输入验证码"/>
+                    <image slot="footer" class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
+                </mp-cell>
+            </mp-cells>
+            <mp-cells title="提交后表单项报错">
+                <mp-cell show-error prop="idcard" title="卡号" ext-class="">
+                    <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入卡号"/>
+                </mp-cell>
+            </mp-cells>
+  </mp-form>
+</view>
