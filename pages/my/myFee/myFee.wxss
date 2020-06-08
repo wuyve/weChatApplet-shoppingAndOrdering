@@ -23,3 +23,53 @@
   color: #e7b980;
   background-color: #e5560c;
 }
+.fee-block {
+  width: 100%;
+  background-color: #eae8e8;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  border-radius: 3%;
+}
+.fee-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fee-content-left {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.font-style-top {
+  font-weight: bold;
+  color: #e5560c;
+  font-size: 28px;
+}
+.font-style-bottom {
+  font-size: 13px;
+  color: #736363;
+}
+.fee-content-width {
+  width: 50%;
+}
+.fee-content-use {
+  background-color: #e5560c;
+  width: 50px;
+  padding-left: 10px;
+  border-radius: 11px;
+  color: #fff;
+}
+.fee-range {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #736363;
+  font-size: 12px;
+}

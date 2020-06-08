@@ -1,11 +1,31 @@
 <!--pages/my/myFee/myFee.wxml-->
 <view class="page">
   <view class="nav">
-    <view class="nav-block" wx:if="{{!isCanFee}}">可用优惠券</view>
-    <view class="nav-block hover-color" wx:if="{{isCanFee}}">可用优惠券</view>
-    <view class="nav-block" wx:if="{{!isShopperFee}}">商家红包</view>
-    <view class="nav-block hover-color" wx:if="{{isShopperFee}}">商家红包</view>
-    <view class="nav-block" wx:if="{{!isNotFee}}">失效券</view>
+    <view class="nav-block" wx:if="{{!isCanFee}}" bindtap="showCanFee">可用优惠券</view>
+    <view class="nav-block hover-color" wx:if="{{isCanFee}}" bindtap="showCanFee">可用优惠券</view>
+    <view class="nav-block" wx:if="{{!isShopperFee}}" bindtap="showShopperFee">商家红包</view>
+    <view class="nav-block hover-color" wx:if="{{isShopperFee}}" bindtap="showShopperFee">商家红包</view>
+    <view class="nav-block" wx:if="{{!isNotFee}}" bindtap="showNotFee">失效券</view>
     <view class="nav-block hover-color" wx:if="{{isNotFee}}">失效券</view>
+  </view>
+  <view class="content">
+    <view class="fee-block" wx:for="{{canFeeLists}}" wx:if="{{isCanFee}}">
+      <view class="fee-content">
+        <view class="fee-content-left">
+          <view class="font-style-top">￥{{item.money}}</view>
+          <view class="font-style-bottom">满{{item.require}}减</view>
+        </view>
+        <view class="fee-content-width">
+          <view style="font-weight: bold;font-size: 15px;">{{item.type}}</view>
+          <view style="font-size: 9px;color: #474242;">{{item.date}}</view>
+          <view style="font-size: 10px;color: #736363;">{{item.where}}</view>
+        </view>
+        <view class="fee-content-left">
+          <view style="color: #e5560c;font-size: 10px;">仅剩{{item.remain}}天</view>
+          <view class="fee-content-use">去使用</view>
+        </view>
+      </view>
+      <view class="fee-range">可用范围：{{item.remark}}</view>
+    </view>
   </view>
 </view>
