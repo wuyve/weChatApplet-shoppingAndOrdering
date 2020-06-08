@@ -1,7 +1,5 @@
 /**app.wxss**/
-
-@import "./lib/weui-wxss/dist/style/weui.wxss";
-
+@import 'weui.wxss';
 .container {
   height: 100%;
   display: flex;
@@ -10,4 +8,5 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  font-size: 15px;
 } 

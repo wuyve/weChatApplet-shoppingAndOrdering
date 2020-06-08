@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/shopper/shopper",
     "pages/myAddr/myAddr",
-    "pages/myAddr/addAddr/addAddr"
+    "pages/myAddr/addAddr/addAddr",
+    "pages/my/myFee/myFee"
   ],
   "window": {
     "backgroundTextStyle": "light",

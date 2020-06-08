@@ -1,0 +1,11 @@
+<!--pages/my/myFee/myFee.wxml-->
+<view class="page">
+  <view class="nav">
+    <view class="nav-block" wx:if="{{!isCanFee}}">可用优惠券</view>
+    <view class="nav-block hover-color" wx:if="{{isCanFee}}">可用优惠券</view>
+    <view class="nav-block" wx:if="{{!isShopperFee}}">商家红包</view>
+    <view class="nav-block hover-color" wx:if="{{isShopperFee}}">商家红包</view>
+    <view class="nav-block" wx:if="{{!isNotFee}}">失效券</view>
+    <view class="nav-block hover-color" wx:if="{{isNotFee}}">失效券</view>
+  </view>
+</view>

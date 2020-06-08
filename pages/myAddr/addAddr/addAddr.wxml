@@ -1,28 +1,23 @@
-pages/myAddr/addAddr/addAddr.wxml
+<!-- pages/myAddr/addAddr/addAddr.wxml -->
+<!-- <wxs src="../../../utils/addr/addr.js" module="addr" /> -->
 <view class="page">
-  <mp-form>
-     <mp-cells title="表单" footer="底部说明文字底部说明文字">
-                <mp-cell prop="qq" title="qq" ext-class="">
-                    <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="请输入qq"/>
-                </mp-cell>
-                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
-                    <view slot="footer" class="weui-vcode-btn">获取验证码</view>
-                </mp-cell>
-                <mp-cell prop="date" title="日期" ext-class="">
-                    <picker data-field="date" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
-                    </picker>
-                </mp-cell>
-                <mp-cell prop="vcode" title="验证码" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="vcode" class="weui-input" placeholder="请输入验证码"/>
-                    <image slot="footer" class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
-                </mp-cell>
-            </mp-cells>
-            <mp-cells title="提交后表单项报错">
-                <mp-cell show-error prop="idcard" title="卡号" ext-class="">
-                    <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入卡号"/>
-                </mp-cell>
-            </mp-cells>
-  </mp-form>
+  <view class="form-line">
+    <view class="left-label">姓名</view>
+    <input class="right-input" placeholder="姓名" value="{{userInfo.username}}" bindblur="evalName"></input>
+  </view>
+  <view class="form-line">
+    <view class="left-label">联系方式</view>
+    <input class="right-input" placeholder="手机号码" value="{{userInfo.userphone}}" type="number" bindblur="evalPhone" maxlength="{{11}}"></input>
+  </view>
+  <view class="form-line">
+    <view class="left-label">所在地区</view>
+    <picker class="right-input" mode="region" bindchange="areaChange" value="{{userInfo.userArea}}">
+      <view class="picker">{{userInfo.userArea[0]}} {{userInfo.userArea[1]}} {{userInfo.userArea[2]}}</view>
+    </picker>
+  </view>
+  <view class="form-line">
+    <view class="left-label">详细地址</view>
+    <input class="right-input" placeholder="详细地址需填写楼栋楼层或房间号" value="{{userInfo.userAddr}}" bindblur="evalAddr"></input>
+  </view>
+  <button bindtap="submitAddr" class="submitAddr">确定</button>
 </view>

@@ -1,6 +1,18 @@
 <!--pages/myAddr/myAddr.wxml-->
-<view>收货地址</view>
-<view class="myAddr-btn" bindtap="addAddr">
-  <image class="myAddr-addIcon" src="../../imgs/add.png"></image>
-  <text class="myAddr-btn-add">添加地址</text>
+<view class="page">
+  <view wx:for="{{myAddr}}" class="recv-addr">
+    <view class="user-info" data-info="{{item}}" bindtap="chooseAddr">
+      <view class="user-name-phone">
+        <view>{{item.username}}</view>
+        <view style="margin-left: 5px">{{item.hidePhone}}</view>
+      </view>
+      <view class="user-addr">{{item.userArea + item.userAddr}}</view>
+    </view>
+    <view class="editor" data-userInfo="{{item}}" bindtap="editAddr">编辑</view>
+  </view>
+  <view class="myAddr-btn" bindtap="addAddr">
+    <image class="myAddr-addIcon" src="../../imgs/add.png"></image>
+    <text class="myAddr-btn-add">添加地址</text>
+  </view>
 </view>
+

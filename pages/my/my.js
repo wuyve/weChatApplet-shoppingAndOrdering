@@ -39,7 +39,7 @@ Page({
       }, {
         src: '../../imgs/myFee.png',
         text: '我的优惠券',
-        url: ''
+        url: './myFee/myFee'
       }, {
         src: '../../imgs/myAddr.png',
         text: '收货地址',

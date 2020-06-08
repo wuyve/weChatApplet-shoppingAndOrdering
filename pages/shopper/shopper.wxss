@@ -1,20 +1,28 @@
 .shopper {
-  margin: 2%;
+  padding: 2%;
   font-size: 20px;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 .shopper-block {
   margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .shopper-wechat {
-
+  width: 70%;
 }
-.pasteWechat, .getCall {
-  font-size: 16px;
+.pasteWechat {
+  font-size: 11px;
   color: blue;
-  position: relative;
-  top: -3.5vh;
-  left: 79vw;
 }
 .shopper-btn {
-  width: 97%;
+  background-color: royalblue;
+  color: white;
+  width: 90%;
+  margin-top: 15%;
+  font-size: 15px;
+  border-radius: 20px;
+  height: 40px;
 }

@@ -1,0 +1,25 @@
+/* pages/my/myFee/myFee.wxss */
+.page {
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+.nav {
+  border: 1px solid #c3baba;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+}
+.nav-block {
+  width: 33%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c3baba;
+}
+.hover-color {
+  color: #e7b980;
+  background-color: #e5560c;
+}

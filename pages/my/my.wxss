@@ -5,7 +5,7 @@
   height: 50px;
   display: flex;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
   color: #8a8a8a;
 }
 .userinfo-avatar {
@@ -39,21 +39,7 @@
   height:20vh;
   font-size: 7px;
 }
-/* .img02 {
-  position: absolute;
-  top: 116px;
-  left: 26%;
-}
-.img03 {
-  position: absolute;
-  top: 116px;
-  left: 50%;
-}
-.img04 {
-  position: absolute;
-  top: 116px;
-  left: 75%;
-} */
+
 .my-order-image01 {
   width:35%;
   height:35%;

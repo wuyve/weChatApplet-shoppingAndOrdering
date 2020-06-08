@@ -1,0 +1,37 @@
+.page {
+  width: 100%;
+  padding: 2%;
+  box-sizing: border-box;
+}
+.form-line {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.left-label {
+  width: 20%;
+  font-size: 12px;
+  color: #6b6666;
+}
+.right-input {
+  width: 75%;
+  font-size: 12px;
+}
+.picker{
+  padding: 13px;
+  background-color: #FFFFFF;
+}
+.submitAddr {
+  background-color: royalblue;
+  color: white;
+  width: 90%;
+  margin-top: 5%;
+  font-size: 15px;
+  border-radius: 20px;
+  height: 40px;
+  position: fixed;
+  bottom: 30%;
+  left: 5%;
+}

@@ -1,8 +1,5 @@
 {
+  "navigationBarTitleText": "添加收货地址" ,
   "component": true,
-  "navigationBarTitleText": "添加收货地址",
-  "usingComponents": {
-    "mp-form": "weui-miniprogram/navigation-bar/navigation-bar"
-  }
-  
+  "usingComponents": {} 
 }
