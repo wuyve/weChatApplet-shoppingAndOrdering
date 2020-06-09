@@ -1,5 +1,7 @@
 // pages/my/my.js
-const app = getApp()
+const app = getApp();
+const bmap = require('../../lib/bmap-wx.js');
+var BMap;
 Page({
 
   /**
@@ -49,7 +51,10 @@ Page({
         text: '联系商家',
         url: '../shopper/shopper'
       }
-    ]
+    ],
+    latitude: 0,
+    longitude: 0,
+    city: ''  
   },
 
   /**
@@ -145,29 +150,114 @@ Page({
   login: function() {
     console.log(app.globalData.userInfo);
     if (JSON.stringify(app.globalData.userInfo) == "{}" || app.globalData.userInfo == null) {
-      let that = this
+      let that = this;
       wx.login({
         success(res) {
-          if (res.code) {
-            console.log(res.code)
-            //发起网络请求
-            wx.request({
-              url: 'https://test.com/onLogin',
-              data: {
-                code: res.code
-              }
+          let code = res.code;
+          console.log(code)
+          if (code === '' || code === undefined) {
+            // 提示用户进行登录
+            wx.showToast({
+              title: '获取用户登录态失败！请检查网络',
+              icon: 'none'
             })
+            return;  
+          } else {
             that.setData({
               hasUserInfo: true,
               showMyHeader: true,
               showLoginBtn: false
             }, () => that.getUserData())
-          } else {
-            console.log('登录失败！' + res.errMsg)
+            // 获取用户信息
+            wx.getUserInfo({
+              success: function (res) {
+                console.log(res)
+                let data = {
+                  js_code: code,
+                  createDate: new Date(),
+                  username: res.userInfo.nickName
+                };
+                wx.request({
+                  url: `http://localhost:8000/regist?js_code=${data.js_code}&createDate=${data.createDate}&username=${data.username}`,
+                  method: 'GET',
+                  success: function (data) {
+                    that.getUserLocation()
+                  },
+                  fail: function(res) {
+                    console.log(res)
+                  }
+                })
+              },
+              fail: function(res) {
+                wx.reLaunch({
+                  url: '',
+                })
+              },
+            })
           }
         }
       })
     }
+  },
+  // 获取用户位置
+  getUserLocation: function () {
+    let that = this;
+    BMap = new bmap.BMapWX({
+      ak: 'Na4coTxBBBC8kYiv2rXVVTelD0ny2nVh'
+    });
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          // 用户未授权的情况下，弹出授权框
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success: function() {
+              // 用户同意小程序使用位置授权
+              wx.getLocation({
+                type: 'gcj02',
+                success: function(res) {
+                  that.latitude = res.latitude;
+                  that.longitude = res.longitude;
+                  // 根据坐标获取当前位置名称，显示在顶部：百度地图逆地址解析
+                  Bmap.regeocoding({
+                    success: function(res) {
+                      let city =  res.originalData.result.addressComponent.city;
+                      that.city = city
+                    },
+                    fail: function (res) {
+                      console.log(res)
+                    }
+                  })
+                }
+              })
+            },
+            fail: function (Res) {
+              // 授权失败 用户拒绝授权
+              console.log(res)
+            }
+          })
+        } else {
+          // 用户已经授权 获取当前位置
+          wx.getLocation({
+            type: 'gcj02',
+            success: function(res) {
+              that.latitude = res.latitude;
+              that.longitude = res.longitude;
+              //2、根据坐标获取当前位置名称，显示在顶部:百度地图逆地址解析
+              BMap.regeocoding({
+                success: function(res) {
+                  var city = res.originalData.result.addressComponent.city;
+                  that.city = city
+                },
+                fail: function(res) {
+                  console.log(res)
+                }
+              })
+            }
+          })
+        }
+      }
+    })
   },
   // 跳转到商家页面
   toShopper: function (e) {

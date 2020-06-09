@@ -27,5 +27,6 @@
       </view>
       <view class="fee-range">可用范围：{{item.remark}}</view>
     </view>
+    <view bindtap="request">发送请求</view>
   </view>
 </view>
