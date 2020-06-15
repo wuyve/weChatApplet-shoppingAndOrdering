@@ -55,6 +55,47 @@ Page({
       this.promptBox('手机号码错误', '请输入正确的手机号码', '确定', false)
     } else if (!param.userAddr) {
       this.promptBox('详细地址错误', '请填写详细地址', '确定', false)
+    } else {
+      let that = this;
+      let params = {
+        is_default: 1,
+        open_id: 'wu-yve',
+        link_name: param.username,
+        link_phone: param.userphone,
+        link_area: `'${param.userArea}'`,
+        link_addr: param.userAddr
+      };
+      wx.request({
+        url: 'http://localhost:8000/receive/address/add',
+        data: params,
+        method: 'POST',
+        success (res) {
+          wx.showModal({
+            title: '成功',
+            content: '添加收货地址成功',
+            showCancel: true,
+            cancelText: '继续添加',
+
+            confirmText: '返回',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../myAddr'
+                })  
+              } else if (res.cancel) {
+                that.setData({
+                  userInfo: {
+                    username: '',
+                    userphone: null,
+                    userArea: ['浙江省', '杭州市', '江干区'],
+                    userAddr: []            
+                  }
+                })  
+              }
+            }
+          })
+        }
+      })  
     }
     console.log(param)
   },
@@ -67,7 +108,10 @@ Page({
       showCancel: showCancel,
       success (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          // console.log('用户点击确定')
+          if (content === '添加收货地址成功') {
+            // 返回到上一页
+          }
         }
       }
     })
