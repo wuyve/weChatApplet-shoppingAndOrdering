@@ -3,21 +3,22 @@
 <view class="page">
   <view class="form-line">
     <view class="left-label">姓名</view>
-    <input class="right-input" placeholder="姓名" value="{{userInfo.username}}" bindblur="evalName"></input>
+    <input class="right-input" placeholder="姓名" value="{{userInfo.link_name}}" bindblur="evalName"></input>
   </view>
   <view class="form-line">
     <view class="left-label">联系方式</view>
-    <input class="right-input" placeholder="手机号码" value="{{userInfo.userphone}}" type="number" bindblur="evalPhone" maxlength="{{11}}"></input>
+    <input class="right-input" placeholder="手机号码" value="{{userInfo.link_phone}}" type="number" bindblur="evalPhone" maxlength="{{11}}"></input>
   </view>
   <view class="form-line">
     <view class="left-label">所在地区</view>
-    <picker class="right-input" mode="region" bindchange="areaChange" value="{{userInfo.userArea}}">
-      <view class="picker">{{userInfo.userArea[0]}} {{userInfo.userArea[1]}} {{userInfo.userArea[2]}}</view>
+    <picker class="right-input" mode="region" bindchange="areaChange" value="{{userInfo.link_area}}">
+      <view class="picker">{{userInfo.link_area[0]}} {{userInfo.link_area[1]}} {{userInfo.link_area[2]}}</view>
     </picker>
   </view>
   <view class="form-line">
     <view class="left-label">详细地址</view>
-    <input class="right-input" placeholder="详细地址需填写楼栋楼层或房间号" value="{{userInfo.userAddr}}" bindblur="evalAddr"></input>
+    <input class="right-input" placeholder="详细地址需填写楼栋楼层或房间号" value="{{userInfo.link_addr}}" bindblur="evalAddr"></input>
   </view>
   <button bindtap="submitAddr" class="submitAddr">确定</button>
+  <button wx:if="{{isDel}}" bindtap="delAddr" class="delAddr">删除</button>
 </view>

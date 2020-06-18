@@ -4,21 +4,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myAddr: [
-      {username: '吴月', userphone: 13216137746, userArea: ['浙江省', '杭州市', '江干区'], userAddr: '杭州电子科技大学'},
-      {username: '吴月1', userphone: 13216137746, userArea: ['浙江省', '杭州市', '江干区'], userAddr: '杭州电子科技大学'},
-      {username: '吴月2', userphone: 13216137746, userArea: ['浙江省', '杭州市', '江干区'], userAddr: '杭州电子科技大学'},
-      {username: '吴月3', userphone: 13216137746, userArea: ['浙江省', '杭州市', '江干区'], userAddr: '杭州电子科技大学'},
-      {username: '吴月4', userphone: 13216137746, userArea: ['浙江省', '杭州市', '江干区'], userAddr: '杭州电子科技大学'}
-    ],
+    myAddr: [],
     chooseAddr: {}
   },
   // 将手机号码隐藏为前三位+****+后四位
-  hidePhoneNum: function (phoneNum = this.data.myAddr) {
+  hidePhoneNum: function (phoneNum) {
     for (let i = 0, len = phoneNum.length; i < len; i++) {
-      let str = phoneNum[i].userphone.toString();
+      console.log(typeof phoneNum[i].link_area)
+      let str = phoneNum[i].link_phone.toString();
       let hidePhone = str.substring(0,3) + '****' + str.substring(7, 11);
       phoneNum[i].hidePhone = hidePhone;
+      phoneNum[i].link_area = phoneNum[i].link_area.slice(1, phoneNum[i].link_area.length - 1).split(',');
     }
     this.setData({
       myAddr: phoneNum
@@ -30,10 +26,10 @@ Page({
     let info = e.currentTarget.dataset.info;
     this.setData({
       chooseAddr: {
-        username: info.username,
-        userphone: info.userphone,
-        userArea: info.userArea,
-        userAddr: info.userAddr
+        link_name: info.link_name,
+        link_phone: info.link_phone,
+        link_area: info.link_area,
+        link_addr: info.link_addr
       }
     })
   },
@@ -41,22 +37,32 @@ Page({
   editAddr: function (e) {
     console.log(e.currentTarget.dataset.userinfo);
     let info = e.currentTarget.dataset.userinfo;
-    let url = `./addAddr/addAddr?username=${info.username}&userphone=${info.userphone}&userArea=${info.userArea}&userAddr=${info.userAddr}`
+    let url = `./addAddr/addAddr?link_name=${info.link_name}&link_phone=${info.link_phone}&link_area=${info.link_area}&link_addr=${info.link_addr}&receive_id=${info.receive_id}`
     wx.navigateTo({
       url: url
     })
   },
   // 获取用户的收货地址
   getUserAddr: function () {
+    let params = {
+      open_id: 'wu-yve'
+    }
+    let that = this;
     wx.request({
-      url: 'url',
+      url: 'http://localhost:8000/receive/address/get',
+      method: 'GET',
+      data: params,
+      success (res) {
+        console.log(res);
+        that.hidePhoneNum(res.data.results);
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.hidePhoneNum();
+    this.getUserAddr();
   },
 
   /**

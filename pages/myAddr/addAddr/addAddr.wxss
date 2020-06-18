@@ -35,3 +35,14 @@
   bottom: 30%;
   left: 5%;
 }
+.delAddr{
+  background-color: red;
+  border-radius: 20px;
+  color: white;
+  width: 90%;
+  font-size: 15px;
+  height: 40px;
+  position: fixed;
+  left: 5%;
+  bottom: 20%;
+}

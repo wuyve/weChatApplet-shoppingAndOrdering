@@ -3,10 +3,10 @@
   <view wx:for="{{myAddr}}" class="recv-addr">
     <view class="user-info" data-info="{{item}}" bindtap="chooseAddr">
       <view class="user-name-phone">
-        <view>{{item.username}}</view>
+        <view>{{item.link_name}}</view>
         <view style="margin-left: 5px">{{item.hidePhone}}</view>
       </view>
-      <view class="user-addr">{{item.userArea + item.userAddr}}</view>
+      <view class="user-addr">{{item.link_area + item.link_addr}}</view>
     </view>
     <view class="editor" data-userInfo="{{item}}" bindtap="editAddr">编辑</view>
   </view>
