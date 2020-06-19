@@ -37,7 +37,7 @@ Page({
       {
         src: '../../imgs/myOrder.png',
         text: '我的预约',
-        url: ''
+        url: './myappoint/myappoint'
       }, {
         src: '../../imgs/myFee.png',
         text: '我的优惠券',

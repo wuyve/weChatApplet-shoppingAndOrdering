@@ -12,5 +12,11 @@
       <view class='picker'>当前选择：<text class='to-picker'>{{time}}</text></view>
     </picker>
   </view>
+  <view class='selector'>
+    <view class='select-time'>预约项目</view>
+    <picker value='{{ap_item}}' range="{{opera_item}}" bindchange='appointItem'>
+      <view class='picker'><text>当前选择：{{opera_item[ap_item]}}</text></view>
+    </picker>
+  </view>
   <button class='button' type='primary' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>预约</button>
 </view>

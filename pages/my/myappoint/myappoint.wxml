@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="nav">
+    <view class="nav-block" wx:if="{{!isbegin}}" bindtap="showBeginAp">未开始</view>
+    <view class="nav-block hover-color" wx:if="{{isbegin}}" bindtap="showBeginAp">未开始</view>
+    <view class="nav-block" wx:if="{{!isfinish}}" bindtap="showFinishAp">已完成</view>
+    <view class="nav-block hover-color" wx:if="{{isfinish}}" bindtap="showFinishAp">已完成</view>
+    <view class="nav-block" wx:if="{{!iscancel}}" bindtap="showCancelAp">已取消</view>
+    <view class="nav-block hover-color" wx:if="{{iscancel}}" bindtap="showCancelAp">已取消</view>
+    <view class="nav-block" wx:if="{{!isinvalid}}" bindtap="showInvalidAp">已失效</view>
+    <view class="nav-block hover-color" wx:if="{{isinvalid}}" bindtap="showInvalidAp">已失效</view>
+  </view>
+  <view class="content">
+    <!-- 未开始 -->
+    <view class="begin-appoint" wx:if="{{isbegin}}" wx:for="{{beginApArr}}" data-id="{{item.appoint_id}}">
+      <view>预约项目{{item.item}}</view>
+      <view>预约时间{{item.LocalDate}}</view>
+      <view>修改</view>
+    </view>
+    <!-- 已完成 -->
+    <view class="finish-appoint" wx:if="{{isfinish}}">
+    </view>
+    <!-- 已取消 -->
+    <view class="cancal-appoint" wx:if="{{iscancel}}">
+    </view>
+    <!-- 已失效 -->
+    <view class="invalid-appoint" wx:if="{{isinvalid}}">
+    </view>
+  </view>
+</view>

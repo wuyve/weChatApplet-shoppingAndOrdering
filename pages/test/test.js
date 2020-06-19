@@ -13,7 +13,9 @@ Page({
     endTime: '19:00',
     date: '2019-12-05',
     beginDate: '2019-12-01',
-    endDate: '2019-12-8'
+    endDate: '2019-12-8',
+    opera_item: ['全项','按摩','做脸','拔罐','祛痘'],
+    ap_item: 0
   },
 
   /**
@@ -125,27 +127,29 @@ Page({
   },
   // 绑定日期
   bindDateChange: function (e) {
-    console.log('选择的日期为：', e.detail.value)
     this.setData({
       date: e.detail.value
-    })
+    });
+  },
+  // 绑定预约项目
+  appointItem: function (e) {
+    this.setData({
+      ap_item: e.detail.value
+    });
   },
   // 检测用户是否登陆
   getUserInfo: function () {
-    console.log(app.globalData.userInfo);
     if (JSON.stringify(app.globalData.userInfo) != "{}" || app.globalData.userInfo != null) {
       let currentTime = new Date()
       let thisTime = `${this.data.date} ${this.data.time}`
       thisTime = thisTime.replace("-", "/")
       thisTime = new Date(Date.parse(thisTime))
       if (thisTime < currentTime) {
-        console.log("预约失败")
         this.popErrorIcon()
       } else {
         this.popConfirm()
       }
     } else {
-
     }
   },
   // 确定选择日期的弹窗
@@ -156,8 +160,27 @@ Page({
       content: `您预约的时间为 ${this.data.date} ${this.data.time}`,
       success: function (res) {
         if (res.confirm) {
-          that.popSuccessTest()
+          let params = {
+            open_id: 'wu-yve',
+            date: that.data.date + ' ' + that.data.time,
+            opera: 0, // 预约状态：未开始：0； 已完成： 1； 已取消： 2， 已失效： 3.（用户无法对此操作，默认为0，仅商家能对此用户进行操作)
+            item: that.data.ap_item
+          };
+          wx.request({
+            url: 'http://localhost:8000/appoint/add',
+            method: 'POST',
+            data: params,
+            success (res) {
+              console.log(res);
+              if(res.data.errno.errno == 200) {
+               that.popSuccessTest();
+              } else {
+                that.popErrorIcon();
+              }
+            }
+          })
         } else {
+          that.popErrorIcon();
         }
       }
     })
@@ -172,7 +195,7 @@ Page({
   // 预约失败
   popErrorIcon: function () {
     wx.showToast({
-      title: '预约时间错误',
+      title: '预约失败',
       image: '../../imgs/error.png',  //image的优先级会高于icon
       duration: 2000
     })

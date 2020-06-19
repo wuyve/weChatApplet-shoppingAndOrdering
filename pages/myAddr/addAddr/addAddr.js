@@ -58,18 +58,17 @@ Page({
     } else if (!param.link_addr) {
       this.promptBox('详细地址错误', '请填写详细地址', '确定', false)
     } else {
-      console.log(userAddr);
-      if (userAddr !== undefined) {
+      let that = this;
+      let params = {
+        is_default: 1,
+        open_id: 'wu-yve',
+        link_name: param.link_name,
+        link_phone: param.link_phone,
+        link_area: `'${param.link_area}'`,
+        link_addr: param.link_addr
+      };
+      if (!that.data.isEdit) {
         // 添加地址
-        let that = this;
-        let params = {
-          is_default: 1,
-          open_id: 'wu-yve',
-          link_name: param.link_name,
-          link_phone: param.link_phone,
-          link_area: `'${param.link_area}'`,
-          link_addr: param.link_addr
-        };
         wx.request({
           url: 'http://localhost:8000/receive/address/add',
           data: params,
@@ -102,6 +101,46 @@ Page({
         })  
       } else {
         // 修改地址
+        params.receive_id = userAddr.receive_id;
+        console.log(params);
+        wx.request({
+          url: 'http://localhost:8000/receive/address/modify',
+          method: 'POST',
+          data: params,
+          success (res) {
+            if (res.data.errno.errno == 200) {
+              wx.showModal({
+                title: '修改成功',
+                content: '修改收货地址成功',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#587C0C',
+                success (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../myAddr'
+                    })
+                  }
+                }
+              })
+            } else {
+              wx.showModal({
+                title: '修改失败',
+                content: '修改收货地址失败',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#FF0000',
+                success (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../myAddr'
+                    })
+                  }
+                }
+              })
+            }
+          }
+        })
       }
     }
   },
