@@ -82,9 +82,9 @@ Page({
               confirmText: '返回',
               success: function (res) {
                 if (res.confirm) {
-                  wx.navigateTo({
+                  wx.reLaunch({
                     url: '../myAddr'
-                  })
+                  });
                 } else if (res.cancel) {
                   that.setData({
                     userInfo: {
@@ -93,7 +93,7 @@ Page({
                       link_area: ['浙江省', '杭州市', '江干区'],
                       link_addr: []            
                     }
-                  })  
+                  });
                 }
               }
             })
@@ -117,7 +117,7 @@ Page({
                 confirmColor: '#587C0C',
                 success (res) {
                   if (res.confirm) {
-                    wx.navigateTo({
+                    wx.reLaunch({
                       url: '../myAddr'
                     })
                   }
@@ -132,7 +132,7 @@ Page({
                 confirmColor: '#FF0000',
                 success (res) {
                   if (res.confirm) {
-                    wx.navigateTo({
+                    wx.reLaunch({
                       url: '../myAddr'
                     })
                   }
@@ -193,7 +193,7 @@ Page({
       data: params,
       success (res) {
         if (res.data.errno.errno = 200) {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '../myAddr'
           });
           wx.showToast({

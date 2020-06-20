@@ -22,11 +22,10 @@
         </view>
         <view class="fee-content-left">
           <view style="color: #e5560c;font-size: 10px;">仅剩{{item.remain}}天</view>
-          <view class="fee-content-use">去使用</view>
+          <view class="fee-content-use" data-feeinfo="{{item}}" bindtap="useFee">去使用</view>
         </view>
       </view>
       <view class="fee-range">可用范围：{{item.remark}}</view>
     </view>
-    <view bindtap="request">发送请求</view>
   </view>
 </view>

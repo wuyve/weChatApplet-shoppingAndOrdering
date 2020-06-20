@@ -22,6 +22,7 @@ Page({
       iscancel: false,
       isinvalid: false  
     });
+    this.getAppointMsg(0);
   },
   // 显示已完成的项目
   showFinishAp: function () {
@@ -31,6 +32,7 @@ Page({
       iscancel: false,
       isinvalid: false  
     });
+    this.getAppointMsg(1);
   },
   // 显示已取消的项目
   showCancelAp: function () {
@@ -40,6 +42,7 @@ Page({
       iscancel: true,
       isinvalid: false  
     });
+    this.getAppointMsg(2);
   },
   // 显示已失效的项目
   showInvalidAp: function () {
@@ -49,6 +52,7 @@ Page({
       iscancel: false,
       isinvalid: true  
     });
+    this.getAppointMsg(3);
   },
   // 获取预约信息
   getAppointMsg: function (opera) {
@@ -67,6 +71,25 @@ Page({
           let arr = res.data.results;
           for(let i = 0, len = arr.length; i < len; i++) {
             arr[i].LocalDate = that.myTimeToLocal(arr[i].date);
+            switch(arr[i].item) {
+              case 0:
+                arr[i].item_msg = '全项';
+                break;
+              case 1:
+                arr[i].item_msg = '按摩';
+                break;
+              case 2:
+                arr[i].item_msg = '做脸';
+                break;
+              case 3:
+                arr[i].item_msg = '拔罐';
+                break;
+              case 4:
+                arr[i].item_msg = '祛痘';
+                break;
+              default:
+                arr[i].item_msg = '未知项目';
+            }
           }
           if (opera == 0) {
             that.setData({
@@ -98,6 +121,47 @@ Page({
     localTime = localTime.substr(0, localTime.lastIndexOf('.'));
     localTime = localTime.replace('T', ' ');
     return localTime;
+  },
+  // 修改预约信息
+  modifyAp: function (e) {
+    console.log(e.currentTarget.dataset.appointinfo);
+    let info = e.currentTarget.dataset.appointinfo;
+    let url = `../../test/test?date=${info.date}&LocalDate=${info.LocalDate}&appoint_id=${info.appoint_id}&item=${info.item}&item_msg=${info.item_msg}`
+    wx.reLaunch({
+      url: url
+    });
+  },
+  // 删除预约信息
+  deleAp: function (e) {
+    console.log(e.currentTarget.dataset.appointinfo);
+    let info = e.currentTarget.dataset.appointinfo;
+    let params = {
+      open_id: 'wu-yve',
+      appoint_id: info.appoint_id
+    };
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8000/appoint/delete',
+      method: 'DELETE',
+      data: params,
+      success (res) {
+        console.log(res);
+        if (res.data.errno.errno == 200) {
+          that.onLoad();
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+          wx.showToast({
+            title: '删除失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

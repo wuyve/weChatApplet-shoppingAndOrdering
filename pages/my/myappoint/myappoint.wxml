@@ -11,19 +11,36 @@
   </view>
   <view class="content">
     <!-- 未开始 -->
-    <view class="begin-appoint" wx:if="{{isbegin}}" wx:for="{{beginApArr}}" data-id="{{item.appoint_id}}">
-      <view>预约项目{{item.item}}</view>
-      <view>预约时间{{item.LocalDate}}</view>
-      <view>修改</view>
+    <view class="begin-appoint" wx:if="{{isbegin}}" wx:for="{{beginApArr}}">
+      <view class="begin-appoint-msg">
+        <view style="width: 100%">预约项目: {{item.item_msg}}</view>
+        <view style="width: 100%">预约时间 {{item.LocalDate}}</view>
+      </view>
+      <view class="begin-appoint-modify">
+        <view data-appointinfo="{{item}}" bindtap="modifyAp" style="color: #1B80D4">修改</view>
+        <view data-appointinfo="{{item}}" bindtap="deleAp" style="color: #DF5A6D">删除</view>
+      </view>
     </view>
     <!-- 已完成 -->
-    <view class="finish-appoint" wx:if="{{isfinish}}">
+    <view class="finish-appoint" wx:if="{{isfinish}}" wx:for="{{finishApArr}}" data-id="{{item.appoint_id}}">
+      <view class="finish-appoint-msg" style="width: 100%">
+        <view style="width: 100%">预约项目: {{item.item_msg}}</view>
+        <view style="width: 100%">预约时间 {{item.LocalDate}}</view>
+      </view>
     </view>
     <!-- 已取消 -->
-    <view class="cancal-appoint" wx:if="{{iscancel}}">
+    <view class="cancal-appoint" wx:if="{{iscancel}}" wx:for="{{cancelApArr}}" data-id="{{item.appoint_id}}">
+      <view class="cancal-appoint-msg" style="width: 100%">
+        <view style="width: 100%">预约项目: {{item.item_msg}}</view>
+        <view style="width: 100%">预约时间 {{item.LocalDate}}</view>
+      </view>
     </view>
     <!-- 已失效 -->
-    <view class="invalid-appoint" wx:if="{{isinvalid}}">
+    <view class="invalid-appoint" wx:if="{{isinvalid}}" wx:for="{{invalidApArr}}" data-id="{{item.appoint_id}}">
+      <view class="invalid-appoint-msg" style="width: 100%">
+        <view style="width: 100%">预约项目: {{item.item_msg}}</view>
+        <view style="width: 100%">预约时间 {{item.LocalDate}}</view>
+      </view>
     </view>
   </view>
 </view>

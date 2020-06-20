@@ -72,6 +72,44 @@ Page({
       }
     })
   },
+  // 使用优惠券
+  useFee: function(e) {
+    let text = e.currentTarget.dataset.feeinfo;
+    console.log(text);
+    text = JSON.stringify(text); // 将对象转换为string格式
+    // let key = 
+    let params = {
+      open_id: 'wu-yve',
+      key: 'f20406f1f2a9a487827ad37a5f7a7afc', // 聚合数据中用户的appkey
+      bgcolor: 'ffffff',
+      fgcolor: '000000',
+      w: 100,
+      m: 100,
+      type: 1,
+      text
+    };
+    wx.request({
+      url: 'http://apis.juhe.cn/qrcode/api', // 聚合数据二维码的API接口
+      method: 'GET',
+      data: params,
+      success (res) {
+        console.log(res);
+        if (res.data.error_code == 0) {
+          // 获取二维码成功
+          let base64 = res.data.result.base64_image;
+          wx.navigateTo({
+            url: `./qrimage/qrimage?base64=${base64}`
+          });
+        } else {
+          wx.showToast({
+            title: '二维码出错',
+            image: '/imgs/error.png',
+            duration: 3000
+          });
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

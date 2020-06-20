@@ -23,9 +23,24 @@
   color: #e7b980;
   background-color: #e5560c;
 }
-.begin-appoint {
+.begin-appoint, .finish-appoint, .cancal-appoint, .invalid-appoint {
   width: 100%;
   background-color: #F3F3F3;
   border-radius: 10%;
   margin-top: 1.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.begin-appoint-msg {
+  width: 80%;
+}
+.begin-appoint-modify {
+  margin: 1%;
+  width: 20%;
+  text-align: center;
+  font-size: 12px;
+}
+.invalid-appoint, .cancal-appoint{
+  color: #C3BABA;
 }

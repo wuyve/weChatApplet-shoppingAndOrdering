@@ -1,0 +1,4 @@
+<!--pages/my/myFee/qrimage/qrimage.wxml-->
+<view>
+<image src="{{qrSrc}}"></image>
+</view>

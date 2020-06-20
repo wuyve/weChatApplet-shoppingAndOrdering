@@ -8,7 +8,8 @@
     "pages/myAddr/myAddr",
     "pages/myAddr/addAddr/addAddr",
     "pages/my/myFee/myFee",
-    "pages/my/myappoint/myappoint"
+    "pages/my/myappoint/myappoint",
+    "pages/my/myFee/qrimage/qrimage"
   ],
   "window": {
     "backgroundTextStyle": "light",
