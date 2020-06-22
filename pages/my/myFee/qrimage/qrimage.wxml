@@ -1,4 +1,5 @@
 <!--pages/my/myFee/qrimage/qrimage.wxml-->
 <view>
-<image src="{{qrSrc}}"></image>
+<!-- <image src="{{qrSrc}}"></image> -->
+  <image src="{{qrcode}}" class="qrcode"></image>
 </view>

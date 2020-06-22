@@ -25,33 +25,47 @@ Page({
     isCanFee: true,
     isShopperFee: false,
     isNotFee: false,
+    isUsed: false,
     canFeeLists,
     shopperFee,
-    notFee
+    notFee,
+    width: ''
   },
   // 显示可用优惠券样式
   showCanFee: function () {
     this.setData({
       isCanFee: true,
       isShopperFee: false,
-      isNotFee: false
-    })
+      isNotFee: false,
+      isUsed: false
+    });
   },
   // 显示商家红包样式
   showShopperFee: function () {
     this.setData({
       isCanFee: false,
       isShopperFee: true,
-      isNotFee: false
-    })
+      isNotFee: false,
+      isUsed: false
+    });
   },
   // 显示失效券样式
   showNotFee: function () {
     this.setData({
       isCanFee: false,
       isShopperFee: false,
-      isNotFee: true
-    })
+      isNotFee: true,
+      isUsed: false
+    });
+  },
+  // 显示已使用券的样式
+  showUsedFee: function () {
+    this.setData({
+      isCanFee: false,
+      isShopperFee: false,
+      isNotFee: false,
+      isUsed: true
+    });
   },
   // 尝试发起HTTPS请求
   request: function () {
@@ -74,47 +88,20 @@ Page({
   },
   // 使用优惠券
   useFee: function(e) {
-    let text = e.currentTarget.dataset.feeinfo;
-    console.log(text);
-    text = JSON.stringify(text); // 将对象转换为string格式
-    // let key = 
-    let params = {
+    let text = {
       open_id: 'wu-yve',
-      key: 'f20406f1f2a9a487827ad37a5f7a7afc', // 聚合数据中用户的appkey
-      bgcolor: 'ffffff',
-      fgcolor: '000000',
-      w: 100,
-      m: 100,
-      type: 1,
-      text
+      qr_id: 20
     };
-    wx.request({
-      url: 'http://apis.juhe.cn/qrcode/api', // 聚合数据二维码的API接口
-      method: 'GET',
-      data: params,
-      success (res) {
-        console.log(res);
-        if (res.data.error_code == 0) {
-          // 获取二维码成功
-          let base64 = res.data.result.base64_image;
-          wx.navigateTo({
-            url: `./qrimage/qrimage?base64=${base64}`
-          });
-        } else {
-          wx.showToast({
-            title: '二维码出错',
-            image: '/imgs/error.png',
-            duration: 3000
-          });
-        }
-      }
+    text = JSON.stringify(text); // 将对象转换为string格式
+    wx.navigateTo({
+      url: `./qrimage/qrimage?text=${text}`
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

@@ -12,7 +12,7 @@
   color: #fff;
 }
 .nav-block {
-  width: 33%;
+  width: 24.5%;
   height: 5vh;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@
 .fee-block {
   width: 100%;
   background-color: #eae8e8;
-  height: 20vh;
+  height: 22vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -72,4 +72,20 @@
   align-items: center;
   color: #736363;
   font-size: 12px;
+}
+.leftTop, .rightTop, .leftBottom, .rightBottom {
+  width: 5%;
+  height: 15px;
+}
+.leftTop {
+  background:radial-gradient(30px at left bottom,transparent 50%,#EAE8E8 50%);
+}
+.rightTop {
+  background:radial-gradient(30px at right bottom,transparent 50%,#EAE8E8 50%);
+}
+.leftBottom {
+  background:radial-gradient(30px at left top,transparent 50%,#EAE8E8 50%);
+}
+.rightBottom {
+  background:radial-gradient(30px at right top,transparent 50%,#EAE8E8 50%);
 }
