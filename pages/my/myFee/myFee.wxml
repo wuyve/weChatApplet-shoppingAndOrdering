@@ -14,13 +14,13 @@
     <view class="fee-block" wx:for="{{canFeeLists}}" wx:if="{{isCanFee}}">
       <view class="fee-content">
         <view class="fee-content-left">
-          <view class="font-style-top">￥{{item.money}}</view>
-          <view class="font-style-bottom">满{{item.require}}减</view>
+          <view class="font-style-top">￥{{item.discount_depth}}</view>
+          <view class="font-style-bottom">{{item.discount_desc}}</view>
         </view>
         <view class="fee-content-width">
-          <view style="font-weight: bold;font-size: 15px;">{{item.type}}</view>
-          <view style="font-size: 9px;color: #474242;">{{item.date}}</view>
-          <view style="font-size: 10px;color: #736363;">{{item.where}}</view>
+          <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
+          <view style="font-size: 9px;color: #474242;">{{item.range_begin}}-{{item.range_end}}</view>
+          <view style="font-size: 10px;color: #736363;">{{item.rule}}</view>
         </view>
         <view class="fee-content-left">
           <view style="color: #e5560c;font-size: 10px;">仅剩{{item.remain}}天</view>
@@ -37,18 +37,18 @@
         <view style="width: 90%; height: 15px; background-color: #EAE8E8; border-top: 1px dotted #5D5E60;"></view>
         <view class="rightBottom"></view>
       </view>
-      <view class="fee-range">可用范围：{{item.remark}}</view>
+      <view class="fee-range">可用范围：{{item.rule}}</view>
     </view>
     <view class="fee-block" wx:for="{{shopperFee}}" wx:if="{{isShopperFee}}">
       <view class="fee-content">
         <view class="fee-content-left">
-          <view class="font-style-top">￥{{item.money}}</view>
-          <view class="font-style-bottom">满{{item.require}}减</view>
+          <view class="font-style-top">￥{{item.discount_depth}}</view>
+          <view class="font-style-bottom">{{item.discount_desc}}</view>
         </view>
         <view class="fee-content-width">
-          <view style="font-weight: bold;font-size: 15px;">{{item.type}}</view>
-          <view style="font-size: 9px;color: #474242;">{{item.date}}</view>
-          <view style="font-size: 10px;color: #736363;">{{item.where}}</view>
+          <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
+          <view style="font-size: 9px;color: #474242;">{{item.range_begin}}-{{item.range_end}}</view>
+          <view style="font-size: 10px;color: #736363;">{{item.rule}}</view>
         </view>
         <view class="fee-content-left">
           <view style="color: #e5560c;font-size: 10px;">仅剩{{item.remain}}天</view>
@@ -65,7 +65,7 @@
         <view style="width: 90%; height: 15px; background-color: #EAE8E8; border-top: 1px dotted #5D5E60;"></view>
         <view class="rightBottom"></view>
       </view>
-      <view class="fee-range">可用范围：{{item.remark}}</view>
+      <view class="fee-range">可用范围：{{item.rule}}</view>
     </view>
   </view>
   
