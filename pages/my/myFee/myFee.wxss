@@ -26,7 +26,6 @@
 .fee-block {
   width: 100%;
   background-color: #eae8e8;
-  height: 22vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -47,16 +46,19 @@
   justify-content: center;
 }
 .font-style-top {
+  width: 100%;
   font-weight: bold;
   color: #e5560c;
   font-size: 28px;
 }
 .font-style-bottom {
+  width: 100%;
   font-size: 13px;
   color: #736363;
 }
 .fee-content-width {
   width: 50%;
+  border-right: 3px dotted #fff;
 }
 .fee-content-use {
   background-color: #e5560c;
@@ -88,4 +90,30 @@
 }
 .rightBottom {
   background:radial-gradient(30px at right top,transparent 50%,#EAE8E8 50%);
+}
+.not-fee {
+  background-color: #dad8d8;
+  color: #fff;
+}
+.not-fee .leftTop {
+  background:radial-gradient(30px at left bottom,transparent 50%,#dad8d8 50%);
+}
+.not-fee .rightTop {
+  background:radial-gradient(30px at right bottom,transparent 50%,#dad8d8 50%);
+}
+.not-fee .leftBottom {
+  background:radial-gradient(30px at left top,transparent 50%,#dad8d8 50%);
+}
+.not-fee .rightBottom {
+  background:radial-gradient(30px at right top,transparent 50%,#dad8d8 50%);
+}
+.not-fee .font-style-top,
+.not-fee .font-style-bottom,
+.not-fee .fee-content-width,
+.not-fee .fee-range {
+  width: 100%;
+  color: #fff;
+}
+.not-fee .fee-content-left {
+  font-size: 20px;
 }

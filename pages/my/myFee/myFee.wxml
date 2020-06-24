@@ -19,7 +19,7 @@
         </view>
         <view class="fee-content-width">
           <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
-          <view style="font-size: 9px;color: #474242;">{{item.range_begin}}-{{item.range_end}}</view>
+          <view style="font-size: 9px;color: #474242;">{{item.begin}}-{{item.end}}</view>
           <view style="font-size: 10px;color: #736363;">{{item.rule}}</view>
         </view>
         <view class="fee-content-left">
@@ -47,7 +47,7 @@
         </view>
         <view class="fee-content-width">
           <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
-          <view style="font-size: 9px;color: #474242;">{{item.range_begin}}-{{item.range_end}}</view>
+          <view style="font-size: 9px;color: #474242;">{{item.begin}}-{{item.end}}</view>
           <view style="font-size: 10px;color: #736363;">{{item.rule}}</view>
         </view>
         <view class="fee-content-left">
@@ -67,6 +67,59 @@
       </view>
       <view class="fee-range">可用范围：{{item.rule}}</view>
     </view>
+    <view class="fee-block not-fee" wx:for="{{notFee}}" wx:if="{{isNotFee}}">
+      <view class="fee-content">
+        <view class="fee-content-left">
+          <view class="font-style-top">￥{{item.discount_depth}}</view>
+          <view class="font-style-bottom">{{item.discount_desc}}</view>
+        </view>
+        <view class="fee-content-width">
+          <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
+          <view style="font-size: 9px;">{{item.begin}}-{{item.end}}</view>
+          <view style="font-size: 10px;">{{item.rule}}</view>
+        </view>
+        <view class="fee-content-left">
+          <view>已过期</view>
+        </view>
+      </view>
+      <view style="width: 100%; height: 15px; display: flex; background-color: #fff;">
+        <view class="leftTop"></view>
+        <view style="width: 90%; height: 15px; background-color: #dad8d8;"></view>
+        <view class="rightTop"></view>
+      </view>
+      <view style="width: 100%; height: 15px; display: flex; background-color: #fff;">
+        <view class="leftBottom"></view>
+        <view style="width: 90%; height: 15px; border-top: 1px dotted #fff; background-color: #dad8d8;"></view>
+        <view class="rightBottom"></view>
+      </view>
+      <view class="fee-range">可用范围：{{item.rule}}</view>
+    </view>
+    <view class="fee-block not-fee" wx:for="{{usedFee}}" wx:if="{{isUsed}}">
+      <view class="fee-content">
+        <view class="fee-content-left">
+          <view class="font-style-top">￥{{item.discount_depth}}</view>
+          <view class="font-style-bottom">{{item.discount_desc}}</view>
+        </view>
+        <view class="fee-content-width">
+          <view style="font-weight: bold;font-size: 15px;">{{item.acti_desc}}</view>
+          <view style="font-size: 9px;">{{item.begin}}-{{item.end}}</view>
+          <view style="font-size: 10px;">{{item.rule}}</view>
+        </view>
+        <view class="fee-content-left">
+          <view>已使用</view>
+        </view>
+      </view>
+      <view style="width: 100%; height: 15px; display: flex; background-color: #fff;">
+        <view class="leftTop"></view>
+        <view style="width: 90%; height: 15px; background-color: #dad8d8;"></view>
+        <view class="rightTop"></view>
+      </view>
+      <view style="width: 100%; height: 15px; display: flex; background-color: #fff;">
+        <view class="leftBottom"></view>
+        <view style="width: 90%; height: 15px; border-top: 1px dotted #fff; background-color: #dad8d8;"></view>
+        <view class="rightBottom"></view>
+      </view>
+      <view class="fee-range">可用范围：{{item.rule}}</view>
+    </view>
   </view>
-  
 </view>

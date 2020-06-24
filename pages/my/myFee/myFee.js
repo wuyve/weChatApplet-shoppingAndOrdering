@@ -1,22 +1,5 @@
 // pages/my/myFee/myFee.js
-// 有效券
-var canFeeLists = [
-  {type: '面膜现金券', date: '2020.6.8 12:00-2020.6.12 17:59', where: '到家可用', money: 5, require: '100', remain: 4, remark: '仅用于购买面膜'},
-  {type: '通用现金券', date: '2020.6.1 12:00-2020.6.30 17:59', where: '门店可用', money: 40, require: '300', remain: 22, remark: '特殊商品除外，不可和其他券叠加使用'}
-];
-// 商家红包
-var shopperFee = [
-  {type: '满减券', data: '2020.6.10 00:00-20206.16 23:59', money: 2.25, remark: '100元洗面奶满减券'},
-  {type: '立减券', data: '2020.6.10 00:00-20206.16 23:59', money: 20, remark: '20元门店优惠券'}
-];
-// 失效券
-var notFee = [
-  {type: '面膜现金券', date: '2020.6.8 12:00-2020.6.12 17:59', where: '到家可用', money: 5, require: '100', remain: 4, remark: '仅用于购买面膜'},
-  {type: '满减券', data: '2020.6.10 00:00-20206.16 23:59', money: 2.25, remark: '100元洗面奶满减券'},
-  {type: '立减券', data: '2020.6.10 00:00-20206.16 23:59', money: 20, remark: '20元门店优惠券'},
-  {type: '通用现金券', date: '2020.6.1 12:00-2020.6.30 17:59', where: '门店可用', money: 40, require: '300', remain: 22, remark: '特殊商品除外，不可和其他券叠加使用'}
-];
-let resultArr = [];
+const app = getApp();
 Page({
 
   /**
@@ -27,11 +10,10 @@ Page({
     isShopperFee: false,
     isNotFee: false,
     isUsed: false,
-    canFeeLists,
-    shopperFee,
-    notFee,
-    usedFee: [],
-    width: ''
+    canFeeLists: [],
+    shopperFee: [],
+    notFee: [],
+    usedFee: []
   },
   // 显示可用优惠券样式
   showCanFee: function () {
@@ -40,6 +22,11 @@ Page({
     let that = this;
     this.getFee(0, 0).then(function (res) {
       let canFeeLists = res;
+      for(let i = 0, len = canFeeLists.length; i < len; i++) {
+        canFeeLists[i].begin = that.formatDate(canFeeLists[i].range_begin);
+        canFeeLists[i].end = that.formatDate(canFeeLists[i].range_end);
+        canFeeLists[i].remain = that.remainTime(canFeeLists[i].range_end);
+      }
       that.setData({
         canFeeLists
       });  
@@ -56,6 +43,11 @@ Page({
     let that = this;
     this.getFee(0, 1).then(function (res) {
       let shopperFee = res;
+      for(let i = 0, len = shopperFee.length; i < len; i++) {
+        shopperFee[i].begin = that.formatDate(shopperFee[i].range_begin);
+        shopperFee[i].end = that.formatDate(shopperFee[i].range_end);
+        shopperFee[i].remain = that.remainTime(shopperFee[i].range_end);
+      }
       that.setData({
         shopperFee
       })
@@ -143,6 +135,16 @@ Page({
       });  
     })
   },
+  // 转换时间格式
+  formatDate: function (date) {
+    return app.myTimeToLocal(date);
+  },
+  // 判断可用券（可用优惠券和商家红包还剩多少天可以使用）
+  remainTime: function (date) {
+    let endTime = new Date(date).getTime();
+    let nowTime = new Date().getTime();
+    return Math.floor((endTime - nowTime) / (24 * 3600 * 1000));
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -152,6 +154,11 @@ Page({
     let that = this;
     this.getFee(0, 0).then(function (res) {
       let canFeeLists = res;
+      for(let i = 0, len = canFeeLists.length; i < len; i++) {
+        canFeeLists[i].begin = that.formatDate(canFeeLists[i].range_begin);
+        canFeeLists[i].end = that.formatDate(canFeeLists[i].range_end);
+        canFeeLists[i].remain = that.remainTime(canFeeLists[i].range_end);
+      }
       that.setData({
         canFeeLists
       });  
