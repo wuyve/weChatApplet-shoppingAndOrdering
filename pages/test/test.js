@@ -87,51 +87,51 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 获取今日时间
-  getTime: function () {
-    let now = new Date();
-    let year = now.getFullYear(), day = now.getDate(), month = now.getMonth() + 1;
-    let min = now.getMinutes(), hour = now.getHours();
-    if (month < 10) month = `0${month}`;
-    if (day < 10) day = `0${day}`;
-    if (min < 10) min = `0${min}`;
-    if (hour < 10) hour = `0${hour}`;
-    let future = new Date(now);
-    future.setDate(now.getDate() + 7);
-    let year7 = future.getFullYear(), day7 = future.getDate(), month7 = future.getMonth() + 1;
-    if (month7 < 10) month = `0${month7}`;
-    if (day7 < 10) day = `0${day7}`;
-    this.setData({
-      date: `${year}-${month}-${day}`,
-      beginDate: `${year}-${month}-${day}`,
-      endDate: `${year7}-${month7}-${day7}`,
-      time: `${hour}:${min}`,
-      beginTime: "09:00",
-      endTime: "19:00"
-    });
-    // if (this.data.date == `${year}-${month}-${day}` && (hour >= 9 && hour < 19)) {
-    //   // 在当天工作时间内
-    //   this.setData({
-    //     time: `${hour}:${min}`,
-    //     beginTime: `${hour}:${min}`,
-    //     endTime: `19:00`
-    //   })
-    // } else if (this.data.date == `${year}-${month}-${day}` && (hour < 9 || hour >= 19)) {
-    //   this.setData({
-    //     time: '09:00',
-    //     beginTime: '9:00',
-    //     endTime: '19:00'
-    //   })
-    // } else if (this.data.date != `${year}-${month}-${day}`) {
-    //   console.log(`${year}-${month}-${day}`)
-    //   this.setData({
-    //     time: '09:00',
-    //     beginTime: '9:00',
-    //     endTime: '19:00'
-    //   })
-    // }
-    console.log('beginDate', this.data.beginDate);
-  },
+    // 获取今日时间
+    getTime: function () {
+      let now = new Date()
+      let year = now.getFullYear(), day = now.getDate(), month = now.getMonth() + 1;
+      let min = now.getMinutes(), hour = now.getHours()
+      if (month < 10) month = `0${month}`
+      if (day < 10) day = `0${day}`
+      if (min < 10) min = `0${min}`
+      if (hour < 10) hour = `0${hour}`
+      let future = new Date(now)
+      future.setDate(now.getDate() + 7)
+      let year7 = future.getFullYear(), day7 = future.getDate(), month7 = future.getMonth() + 1
+      if (month7 < 10) month7 = `0${month7}`
+      if (day7 < 10) day7 = `0${day7}`
+      this.setData({
+        date: `${year}-${month}-${day}`,
+        beginDate: `${year}-${month}-${day}`,
+        endDate: `${year7}-${month7}-${day7}`,
+        time: `${hour}:${min}`,
+        beginTime: "09:00",
+        endTime: "19:00"
+      }, () => console.log(this.data.beginDate, this.data.date, this.data.endDate))
+      // if (this.data.date == `${year}-${month}-${day}` && (hour >= 9 && hour < 19)) {
+      //   // 在当天工作时间内
+      //   this.setData({
+      //     time: `${hour}:${min}`,
+      //     beginTime: `${hour}:${min}`,
+      //     endTime: `19:00`
+      //   })
+      // } else if (this.data.date == `${year}-${month}-${day}` && (hour < 9 || hour >= 19)) {
+      //   this.setData({
+      //     time: '09:00',
+      //     beginTime: '9:00',
+      //     endTime: '19:00'
+      //   })
+      // } else if (this.data.date != `${year}-${month}-${day}`) {
+      //   console.log(`${year}-${month}-${day}`)
+      //   this.setData({
+      //     time: '09:00',
+      //     beginTime: '9:00',
+      //     endTime: '19:00'
+      //   })
+      // }
+      console.log('beginDate', this.data.beginDate)
+    },
   // 绑定时间
   bindTimeChange: function (e) {
     console.log('选择的时间为：', e.detail.value);
