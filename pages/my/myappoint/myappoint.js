@@ -135,30 +135,46 @@ Page({
   deleAp: function (e) {
     console.log(e.currentTarget.dataset.appointinfo);
     let info = e.currentTarget.dataset.appointinfo;
-    let params = {
-      open_id: 'wu-yve',
-      appoint_id: info.appoint_id
-    };
     let that = this;
-    wx.request({
-      url: 'http://localhost:8000/appoint/delete',
-      method: 'DELETE',
-      data: params,
+    wx.showModal({
+      title: '删除',
+      content: '确定要删除吗？',
+      showCancel: true,
+      cancelText: '点错了',
+      cancelColor: '#000',
+      confirmText: '删除',
+      confirmColor: '#8BC34A',
       success (res) {
-        console.log(res);
-        if (res.data.errno.errno == 200) {
-          that.onLoad();
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success',
-            duration: 2000
-          });
-        } else {
-          wx.showToast({
-            title: '删除失败',
-            icon: 'none',
-            duration: 2000
-          });
+        if (res.confirm) {
+          // 确定要删除
+          let params = {
+            open_id: 'wu-yve',
+            appoint_id: info.appoint_id
+          };
+          wx.request({
+            url: 'http://localhost:8000/appoint/delete',
+            method: 'DELETE',
+            data: params,
+            success (res) {
+              console.log(res);
+              if (res.data.errno.errno == 200) {
+                that.onLoad();
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+              } else {
+                wx.showToast({
+                  title: '删除失败',
+                  icon: 'none',
+                  duration: 2000
+                });
+              }
+            }
+          })
+        } else if (res.cancel) {
+          // 不删除
         }
       }
     })

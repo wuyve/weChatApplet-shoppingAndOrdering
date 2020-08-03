@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <view class='my-center'>
-  <image wx:if="{{showMyHeader}}" bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <image wx:if="{{showMyHeader}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
   <view wx:if="{{showMyHeader}}">用户名:{{userInfo.nickName}}</view>
   <button wx:if="{{showLoginBtn}}" class="showLoginBtn" open-type='getUserInfo' bindgetuserinfo="login">登陆</button>
 </view>
